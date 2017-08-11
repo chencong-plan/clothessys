@@ -23,7 +23,7 @@ public class UserDao {
 		ResultSet resultSet = null;
 		int count = 0;
 		try {
-			String sql = "select count(1) from User where username=? and password=?";
+			String sql = "select count(1) from users where username=? and password=?";
 			pStatement = connection.prepareStatement(sql);
 			pStatement.setString(1, username);
 			pStatement.setString(2, password);
@@ -60,7 +60,7 @@ public class UserDao {
 		PreparedStatement pStatement = null;
 		int count = 0;
 		try {
-			String sql = "insert into User (username,password,sex,city,phone) values (?,?,?,?,?)";
+			String sql = "insert into users (username,password,sex,city,phone) values (?,?,?,?,?)";
 			pStatement = connection.prepareStatement(sql);
 			pStatement.setString(1, user.getUsername());
 			pStatement.setString(2, user.getPassword());

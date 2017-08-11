@@ -89,8 +89,7 @@ public class OrdersJFrame extends JFrame {
 						System.out.println(i);
 					}
 				}
-				OrdersJFrame.this.dispose();
-				OrdersJFrame.this.setVisible(true);
+				initalModel();
 			}
 		});
 		contentPane.add(btnAdd);
@@ -130,14 +129,22 @@ public class OrdersJFrame extends JFrame {
 		renderer.setHorizontalAlignment(JLabel.CENTER);
 		jTable.setDefaultRenderer(Object.class, renderer);
 		// 给JTable添加内容项
+		initalModel();
+		JScrollPane scrollPane = new JScrollPane(jTable);
+		initalModel();
+		this.add(scrollPane);
+	}
+
+	private void initalModel() {
+		tableModel.setRowCount(0);
 		OrdersDao dao = new OrdersDao();
 		List<Orders> lists = dao.getOrdersList();
 		for (Orders orders : lists) {
 			tableModel.addRow(
-					new Object[] { orders.getId(), orders.getClotherType(), orders.getPrice(), orders.getVipPrice() });
+					new Object[] { orders.getId(), orders.getClotherType(), orders.getPrice(), orders.getVipPrice() 
+							}
+					);
 		}
-		JScrollPane scrollPane = new JScrollPane(jTable);
-		this.add(scrollPane);
 	}
 
 }

@@ -7,9 +7,14 @@ import java.sql.SQLException;
 
 public class DBUtils {
 
-	private static final String Driver = "com.mysql.jdbc.Driver";
-	private static final String url = "jdbc:mysql://localhost:3306/clothessys";
-	private static final String user = "root";
+//	private static final String Driver = "com.mysql.jdbc.Driver";
+//	private static final String url = "jdbc:mysql://localhost:3306/clothessys";
+//	private static final String user = "root";
+//	private static final String password = "123456";
+	
+	private static final String Driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+	private static final String url = "jdbc:sqlserver://localhost:1433;DataBaseName=clothessys";
+	private static final String user = "sa";
 	private static final String password = "123456";
 
 	private static Connection connection = null;
@@ -31,5 +36,13 @@ public class DBUtils {
 			return connection;
 		}
 		return connection;
+	}
+	
+	public static void main(String[] args) {
+		if (getConnection() == null) {
+			System.out.println("error");
+		}else{
+			System.out.println("ok");
+		}
 	}
 }
